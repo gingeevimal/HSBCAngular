@@ -1,0 +1,65 @@
+{
+    "result": true,
+    "data" : [{
+        "id":1,
+        "parentId": 1,
+        "label": "Documents",
+        "data": "Documents Folder",
+        "expandedIcon": "pi pi-folder-open",
+        "collapsedIcon": "pi pi-folder",
+        "attributeList": [],
+        "children": [{
+                "id": 11,
+                "parentId": 1,
+                "label": "Work",
+                "data": "Work Folder",
+                "expandedIcon": "pi pi-folder-open",
+                "collapsedIcon": "pi pi-folder",
+                "attributeList": [],
+                "children": [{ "id": 111,"parentId": 1,"label": "Expenses.doc", "icon": "pi pi-file", "data": "Expenses Document",  "attributeList": []}, {"id": 112,"parentId": 1,"label": "Resume.doc", "icon": "pi pi-file", "attributeList": [], "data": "Resume Document"}]
+            },
+            {
+                "id": 12,
+                "parentId": 1,
+                "label": "Home",
+                "data": "Home Folder",
+                "expandedIcon": "pi pi-folder-open",
+                "collapsedIcon": "pi pi-folder",
+                "attributeList": [],
+                "children": [{"id": 121,"parentId": 1,"label": "Invoices.txt", "icon": "pi pi-file", "attributeList": [], "data": "Invoices for this month"}]
+            }]
+    },
+    {
+        "id":2,
+        "parentId": 2,
+        "label": "Pictures",
+        "data": "Pictures Folder",
+        "expandedIcon": "pi pi-folder-open",
+        "collapsedIcon": "pi pi-folder",
+        "attributeList": [],
+        "children": [
+            {"id": 21,"parentId": 2,"label": "barcelona.jpg", "icon": "pi pi-image", "attributeList": [], "data": "Barcelona Photo"},
+            {"id": 22,"parentId": 2,"label": "logo.jpg", "icon": "pi pi-file", "attributeList": [], "data": "PrimeFaces Logo"},
+            {"id": 23,"parentId": 2,"label": "primeui.png", "icon": "pi pi-image", "attributeList": [], "data": "PrimeUI Logo"}]
+    },
+    {    "id":3,
+        "parentId": 3,
+        "label": "Movies",
+        "data": "Movies Folder",
+        "expandedIcon": "pi pi-folder-open",
+        "collapsedIcon": "pi pi-folder",
+        "attributeList": [],
+        "children": [{"id": 31,"parentId": 3,
+                "label": "Al Pacino",
+                "data": "Pacino Movie",
+                "attributeList": [],
+                "children": [{"id": 311,"parentId": 3,"label": "Scarface", "icon": "pi pi-video", "attributeList": [], "data": "Scarface Movie"}, {"id": 312,"parentId": 3,"label": "Serpico", "icon": "pi pi-file-video", "attributeList": [], "data": "Serpico Movie"}]
+            },
+            {"id": 32,"parentId": 3,
+                "label": "Robert De Niro",
+                "data": "De Niro Movies",
+                "attributeList": [],
+                "children": [{"id": 321,"parentId": 3,"label": "Goodfellas", "icon": "pi pi-video", "attributeList": [], "data": "Goodfellas Movie"}, {"id": 321,"parentId": 3,"label": "Untouchables", "icon": "pi pi-video", "attributeList": [], "data": "Untouchables Movie"}]
+            }]
+    }]
+}

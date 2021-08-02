@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  <!-- Bootstrap CSS -->
+
+  <!-- <link rel="stylesheet" type="text/css" href="/node_modules/primeicons/primeicons.css" />
+  <link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/themes/nova-light/theme.css" />
+  <link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/primeng.min.css" /> -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/5857c9ee1a.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" >
+<!-- <link rel="stylesheet" href="css/styles.css" > -->
+
+<link rel="stylesheet" href="./assets/css/multiselect.css">
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="./assets/js/bootstrap-multiselect.js"></script>
+<script type="text/javascript" src="./assets/js/owl.carousel.min.js"></script>
+
+
+
+
+  <title>HSBC CAD</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class="spinner">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+    <p class="loading text-center">Please wait...</p>
+  </div>
+  <app-root></app-root>
+<!-- <script>
+  let appending  = false;
+  $(() => {
+    $(window).on('shown.bs.modal', function() { 
+
+      $('.modal').appendTo('#drawing');
+    $('.modal-backdrop').appendTo('#drawing');
+     console.log('shown');
+     if(!appending){
+       appending =  true;
+      let height = $('.modal-header').height();
+      $('head').append('<style>.modal-header h5:before{border-top: '+height+'px solid transparent;}</style>');
+     }
+});
+  });
+ 
+</script> -->
+	<script>
+            $(document).ready(function() {
+              $('.platform-carousel').owlCarousel({
+				animateOut: 'fadeOut',
+    			smartSpeed:450,                
+                margin: 10,
+				sloop:true,
+                responsiveClass: true,
+                responsive: {
+                  0: {
+                    items: 1,					  
+					loop:true,
+                    nav: true					  
+                  },
+                  600: {
+                    items: 1,
+					loop:true,
+                    nav: false
+                  },
+                  1000: {
+                    items: 1,
+                    nav: true,
+                    loop: true,
+                    margin: 20
+                  }
+                }
+              })
+            })
+          </script>
+	<script>
+//Get the button
+try{
+
+
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+}
+catch(e){
+
+}
+
+function scrollFunction() {
+	
+	var mybutton =$("#myBtn");
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+	// mybutton.style.display = "block";
+	$("#myBtn").show();
+  } else {
+	$("#myBtn").show();
+    // mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+</body>
+</html>
+<script>
+  feather.replace()
+</script>

@@ -1,0 +1,6 @@
+header .nav-item{
+    margin:unset !important;
+}
+.switch-left{
+    display:none;
+}

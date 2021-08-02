@@ -1,0 +1,147 @@
+#  Template NodeJS build
+
+#  This template allows you to validate your NodeJS code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: node:10.15.3
+
+# pipelines:
+#   default:
+#         - step:
+#             name: Installing dependencies
+#             caches:
+#               - node
+#             script:
+#               - npm install
+#               - npm install -g @angular/cli
+#               - ng build --prod
+#               - ls -ltr
+#               - cd dist/Auto-Deployement
+#               - pipe: atlassian/aws-s3-deploy:0.4.5
+#             variables:
+#               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+#               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+#               AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+#               ACL: "public-read"
+#               S3_BUCKET: $S3_BUCKET
+#               LOCAL_PATH: $(pwd)     
+
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+        script:
+           - npm install
+           - npm install -g @angular/cli
+           - ng build
+           - ls -ltr
+           - cd dist/DataPlatform
+        #   - pipe: atlassian/aws-s3-deploy:0.2.4
+        #     variables:
+        #       AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+        #       AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+        #       AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+        #       ACL: "public-read"
+        #       S3_BUCKET: $S3_BUCKET
+        #       LOCAL_PATH: $(pwd)
+  branches:
+   development:
+        - step:
+            name: Installing dependencies
+            caches:
+                - node
+            script:
+                  - npm install
+                  - npm install -g @angular/cli
+                  - ng build
+                  - ls -ltr
+                  - cd dist/DataPlatform
+                  - pipe: atlassian/aws-s3-deploy:0.2.4
+                    variables:
+                      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                      AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                      ACL: "public-read"
+                      S3_BUCKET: "mobito-bitbucket/Dataplatform"
+                      LOCAL_PATH: $(pwd)
+        #     script:
+        #         - npm install
+        #         - npm install -g @angular/cli
+        #         - ng build
+        #     artifacts:
+        #         - package.json
+        #         - dist/**
+        #         - node_modules/**
+        # - step:
+        #     name: Zip it
+        #     image: atlassian/default-image:2
+        #     script:
+        #        - zip -r package-$BITBUCKET_BUILD_NUMBER.zip package.json dist/** node_modules/**
+        #     artifacts: 
+        #        - package-*.zip
+        # - step:
+        #     name: Deploy it to Azure
+        #     script:
+        #         - pipe: microsoft/azure-web-apps-deploy:1.0.3
+   MAT_Development:
+        - step:
+            name: Installing MAT dependencies
+            caches:
+                - node
+            script:
+                  - npm install
+                  - npm install -g @angular/cli
+                  - ng build
+                  - ng test
+                  - ls -ltr
+                  - cd dist/DataPlatform
+                  - pipe: atlassian/aws-s3-deploy:0.2.4
+                    variables:
+                      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                      AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                      ACL: "public-read"
+                      S3_BUCKET: $S3_BUCKET
+                      LOCAL_PATH: $(pwd)
+
+   mat_MOB180004391_23-03-2021: 
+         - step:
+             name: Code pushing to MAT_Development
+             caches:
+                 - node
+             script:
+                   - git fetch
+                   - git checkout -b CICD_DEMO
+                   - git merge mat_MOB180004391_23-03-2021
+                   - git push -v --tags origin CICD_DEMO:CICD_DEMO
+   CICD_DEMO:
+        - step:
+            name: Code pushing to MAT_Development
+            caches:
+                - node
+            script:
+                  - git fetch
+                  - git checkout -b MAT_Development
+                  - git merge CICD_DEMO
+                  - git push -v --tags origin MAT_Development:MAT_Development
+#    AutoDeployment:
+#         - step:
+#             name: Installation
+#             caches:
+#                - node
+#             script:
+#                - npm install
+#                - npm install -g @angular/cli
+#                - ng build
+#             artifacts:
+#                - node_modules/** # Save modules for next steps
+#                - dist/** # Save build for next steps
+#         - step:
+#            name: Deploy
+#            script:
+#             - echo "$(ls -la)"
+#             - echo "$(ls -la dist)"
+#             - ssh user@51.141.184.168 rm -rf /var/www/html/your-app
+#             - scp -r dist/AutoDeployment user@51.141.184.168:/var/www/html/AutoDeployment

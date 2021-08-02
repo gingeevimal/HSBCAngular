@@ -1,0 +1,41 @@
+{
+    "result": true,
+    "data": [
+        {
+            "id": 1,
+            "attributeTypeName": "Label"
+        },
+        {
+            "id": 2,
+            "attributeTypeName": "Textbox"
+        },
+        {
+            "id": 3,
+            "attributeTypeName": "TextArea"
+        },
+        {
+            "id": 4,
+            "attributeTypeName": "checkbox"
+        },
+        {
+            "id": 5,
+            "attributeTypeName": "Radio button"
+        },
+        {
+            "id": 6,
+            "attributeTypeName": "Dropdown"
+        },
+        {
+            "id": 10,
+            "attributeTypeName": "Length"
+        },
+        {
+            "id": 11,
+            "attributeTypeName": "Date Range"
+        },
+        {
+            "id": 12,
+            "attributeTypeName": "Numeric Range"
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+<header>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="logo-section"> <a class="navbar-brand" href="/dashboard">
+      <!-- <img src="assets/img/udp-full-logo.png" class="logo"/>  -->
+      <h4 style="height: 15px;">CAD CENTER</h4>
+      <!--<span>U</span>nified <span>D</span>ata <span>P</span>latform--></a> 
+    <a class="toggle-switch" href="javascript:void(0)"><span class="switch-right"><i data-feather="toggle-right"></i></span><span class="switch-left" ><i data-feather="toggle-left"></i></span></a> </div>
+	  
+	  <nav aria-label="breadcrumb" class="breadcrumb-section">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/home" class="home"><i class="fas fa-home" aria-hidden="true"></i></a></li>
+		<li class="breadcrumb-item"><a href="/UserManagement"  class="text-capitalize">{{currentpage}}</a></li>
+    </ol>
+  </nav>
+	  
+  <ul class="navbar-nav nav-right order-lg-3 ml-auto">
+    <li class="nav-item dropdown alerts"> <a class="nav-link notification" href="#" id="alerts" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="far fa-bell"> <span
+            class="badge badge-danger badge-pill">5</span> </i> </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="alert-title">Notifications <span class="badge badge-light float-right">5</span></div>
+        <div class="alert-section">
+          <a class="dropdown-item" href="#">
+            <div class="alert-desc">
+              <h6>Renewal before 06/28/2019</h6>
+              <p>Lease Number US001P01, Constitution Plaza </p>
+              <div class="time">11.30pm</div>
+            </div>
+          </a>
+          <a class="dropdown-item" href="#">
+            <div class="alert-desc">
+              <h6>Renewal before 06/28/2019</h6>
+              <p>Lease Number US001P01, Constitution Plaza </p>
+              <div class="time">11.30pm</div>
+            </div>
+
+          </a>
+          <a class="dropdown-item" href="#">
+            <div class="alert-desc">
+              <h6>Renewal before 06/28/2019</h6>
+              <p>Lease Number US001P01, Constitution Plaza </p>
+              <div class="time">11.30pm</div>
+            </div>
+          </a>
+          <a class="dropdown-item" href="#">
+            <div class="alert-desc">
+              <h6>Renewal before 06/28/2019</h6>
+              <p>Lease Number US001P01, Constitution Plaza </p>
+              <div class="time">11.30pm</div>
+            </div>
+
+          </a>
+          <a class="dropdown-item" href="#">
+            <div class="alert-desc">
+              <h6>Renewal before 06/28/2019</h6>
+              <p>Lease Number US001P01, Constitution Plaza </p>
+              <div class="time">11.30pm</div>
+            </div>
+
+          </a>
+        </div>
+        <div class="alert-btn">
+          <button type="button" class="btn btn-navy btn-block py-2">View All</button>
+        </div>
+      </div>
+    </li>
+
+    <li class="nav-item dropdown profile"> <a class="nav-link" href="#" id="profile" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img
+          src="assets/img/John-Doe.jpg" class="profile-img"> </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="user-info">
+          <h6>{{ user_name != '' ? user_name : '' }}</h6>
+          <p>{{ email != '' ? email: '' }}</p>
+        </div>
+        <a class="dropdown-item text-blue" href="#"><i class="fas fa-user text-blue"></i> Profile</a>
+        <a class="dropdown-item" href="#"><i class="fas fa-cog text-warning"></i> Settings</a>
+        <a class="dropdown-item" href="#"><i class="fas fa-key text-success"></i> Change Password</a>
+        <a class="dropdown-item"  (click)="auth.logout()"><i class="fas fa-power-off text-danger"></i> Logout</a>
+      </div>
+    </li>
+  </ul>
+  </nav>
+</header>
+

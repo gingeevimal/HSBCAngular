@@ -1,0 +1,298 @@
+<div class="content-section" id="fullscreen" [ngClass]="{'ml-0': !showSideBar}">
+    <div class="row form-group">
+        <div class="col-lg-12">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5>Users</h5>
+                    <a href="javascript:void(0);" class="btn-add" (click)="Open()" data-toggle="modal" data-target="#addUsers">Add New</a>                    </div>
+                <div class="card-body" *ngIf="showCount">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="display-inline-block margin-r-10 float-left mt-2"><b>{{ dt.totalRecords }}</b> Results Found</div>
+                            <p-toast position="top-right" [style]="{marginTop: '80px'}"></p-toast>
+                            <div class="form-inline float-right form-group">
+                                <div class="dropdown export-btn"> <a href="javascript:void(0);" class="btn btn-export mr-3" data-toggle="dropdown"><i class="fas fa-file-export"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item" (click)="exportPdf()">PDF</a> <a class="dropdown-item" (click)="dt.exportCSV()">CSV</a>
+                                        <!--<a class="dropdown-item" (click)="exportExcel()">Excel</a>-->
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="courseNumber" placeholder="Search" (input)="dt.filterGlobal($event.target.value, 'contains')">
+  
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <p-table #dt class="p-table-grid" [columns]="cols" [value]="userManagement" [paginator]="true" [rowsPerPageOptions]="[5,10,25,50,100,500]"
+                                [rows]="10" rowHover="true" sortMode="multiple" [responsive]="true" exportFilename="UserManagement_Details">
+  
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                                        </th>
+                                        <th class="text-center w-9em">Status</th>
+                                        <th class="text-center w-9em">Action</th>
+  
+                                    </tr>
+                                </ng-template>
+  
+                                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                    <tr>
+                                        <td *ngFor="let col of columns">
+                                            <div pTooltip="{{rowData[col.field]}}" tooltipPosition="top">
+                                                {{rowData[col.field]}}
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <i class="fas fa-square text-success" *ngIf="rowData.active == true"></i>
+                                            <i class="fas fa-square text-danger" *ngIf="rowData.active == false"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="javascript:void(0);" class="text-primary mr-3" (click)="editUserManagement(rowData)" title="Edit" data-toggle="modal"
+                        data-target="#addUsers">
+                        <i class="fas fa-pen-square"></i>
+                      </a>
+  
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal" class="text-danger" title="Delete" (click)="deleteUser(rowData)"><i class="fas fa-trash-alt"></i></a></td>
+                                    </tr>
+                                </ng-template>
+  
+                                <ng-template pTemplate="emptymessage" let-columns>
+                                    <tr>
+                                        <td class="text-center" [attr.colspan]="columns.length + 2">
+                                            <b>No records found</b>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+  
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal fade" id="addUsers" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">User Management</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="Close()"> <span aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div [ngClass]="{'tab-pane fade show': true, 'active': update === true}" id="nav-data-submission" role="tabpanel" aria-labelledby="nav-data-submission-tab">
+                            <!-- Tab Content1 Starts-->
+                            <p-toast position="top-right" [style]="{marginTop: '80px'}"></p-toast>
+                            <form [formGroup]="userManagementForm" (ngSubmit)="submitForm(userManagementForm)" autocomplete="off">
+                                <div class="row">
+
+                                    
+                                    <div class="col-md-4 form-group align-self-end">
+                                        <label for="epass" class="mr-3">Security</label>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="customRadioInline1" formControlName="Security" value="true" name="Security" class="custom-control-input"
+                                                [(ngModel)]="selectedValue">
+                                            <label class="custom-control-label" for="customRadioInline1">Public</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="customRadioInline2" value="false" formControlName="Security" name="Security" class="custom-control-input"
+                                                [(ngModel)]="selectedValue">
+                                            <label class="custom-control-label" for="customRadioInline2">BO</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="BusinessPartner">Business Partner</label>
+                                        <input type="text" formControlName="BusinessPartner" name="BusinessPartner" class="form-control" id="BusinessPartner" maxlength="50" (keyup)="error=''"
+                                            autocomplete="off">
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['BusinessPartner'].errors?.required" class="error">
+                                            Please enter first name
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['BusinessPartner'].errors?.required && userManagementForm.controls['BusinessPartner'].errors?.whitespace"
+                                            class="error">
+                                            please remove whitespace or special characters
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['BusinessPartner'].errors?.required && !userManagementForm.controls['BusinessPartner'].errors?.whitespace && userManagementForm.controls['BusinessPartner'].errors?.alphabetical"
+                                            class="error">
+                                            Special characters or numbers not allowed
+                                        </div>
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['BusinessPartner'].errors?.maxlength ? true: false" class="error">
+                                            First name must be lessthan 50 characters
+                                        </div>
+                                    </div>
+                                        <div class="col-md-6 form-group">
+                                        <label for="Department">Department</label>
+                                        <p-dropdown class="p-dropdown-custom" id="department" [options]="clients" formControlName="Department" [(ngModel)]="selectedOrganization"
+                                            placeholder="Select" filter="true"></p-dropdown>
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['Department'].errors?.required" class="error">
+                                            Please select an organization name
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['Department'].errors?.required && userManagementForm.controls['Department'].errors?.whitespace"
+                                            class="error">
+                                            please remove whitespace or special characters
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['Department'].errors?.required && !userManagementForm.controls['Department'].errors?.whitespace && userManagementForm.controls['Department'].errors?.alphabetical"
+                                            class="error">
+                                            Special characters or numbers not allowed
+                                        </div>
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['Department'].errors?.maxlength ? true: false" class="error">
+                                            Organization name must be lessthan 50 characters
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="Status">Status</label>
+                                        <p-dropdown class="p-dropdown-custom" id="Status" [options]="status" formControlName="Status" [(ngModel)]="selectedOrganization"
+                                            placeholder="Select" filter="true"></p-dropdown>
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['Status'].errors?.required" class="error">
+                                            Please select an organization name
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['Status'].errors?.required && userManagementForm.controls['Status'].errors?.whitespace"
+                                            class="error">
+                                            please remove whitespace or special characters
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['Status'].errors?.required && !userManagementForm.controls['Status'].errors?.whitespace && userManagementForm.controls['Status'].errors?.alphabetical"
+                                            class="error">
+                                            Special characters or numbers not allowed
+                                        </div>
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['Status'].errors?.maxlength ? true: false" class="error">
+                                            Organization name must be lessthan 50 characters
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="SecurityName">Security Name</label>
+                                        <input type="text" formControlName="SecurityName" name="SecurityName" class="form-control" id="SecurityName" maxlength="50" (keyup)="error=''"
+                                            autocomplete="off">
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['SecurityName'].errors?.required" class="error">
+                                            Please enter last name
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['SecurityName'].errors?.required && userManagementForm.controls['SecurityName'].errors?.whitespace"
+                                            class="error">
+                                            please remove whitespace or special characters
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['SecurityName'].errors?.required && !userManagementForm.controls['SecurityName'].errors?.whitespace && userManagementForm.controls['SecurityName'].errors?.alphabetical"
+                                            class="error">
+                                            Special characters or numbers not allowed
+                                        </div>
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['SecurityName'].errors?.maxlength ? true: false" class="error">
+                                            First name must be lessthan 50 characters
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="OrderType">Order Type</label>
+                                        <p-dropdown class="p-dropdown-custom" id="ordertype" [options]="orderType" formControlName="OrderType" [(ngModel)]="selectedOrganization"
+                                            placeholder="Select" filter="true"></p-dropdown>
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['OrderType'].errors?.required" class="error">
+                                            Please select an organization name
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['OrderType'].errors?.required && userManagementForm.controls['OrderType'].errors?.whitespace"
+                                            class="error">
+                                            please remove whitespace or special characters
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['OrderType'].errors?.required && !userManagementForm.controls['OrderType'].errors?.whitespace && userManagementForm.controls['OrderType'].errors?.alphabetical"
+                                            class="error">
+                                            Special characters or numbers not allowed
+                                        </div>
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['OrderType'].errors?.maxlength ? true: false" class="error">
+                                            Organization name must be lessthan 50 characters
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 form-group">
+                                        <label for="ISIN">ISIN</label>
+                                        <input type="text" formControlName="ISIN" (keypress)="numberOnly($event)" name="ISIN" class="form-control" id="ISIN" (keyup)="error=''"
+                                            autocomplete="off">
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['ISIN'].errors?.required" class="error">
+                                            Please enter ISIN number
+                                        </div>
+                                        <div *ngIf="isSubmitted  && !userManagementForm.controls['ISIN'].errors?.required && userManagementForm.controls['ISIN'].errors?.numeric ? true: false"
+                                            class="error">
+                                            Please enter a valid ISIN number
+                                        </div>
+                                        <div *ngIf="isSubmitted  && !userManagementForm.controls['ISIN'].errors?.required && !userManagementForm.controls['ISIN'].errors?.numeric && userManagementForm.controls['ISIN'].errors?.minlength ? true: false"
+                                            class="error">
+                                            ISIN length should be min 8 characters.
+                                        </div>
+                                        <div *ngIf="isSubmitted  && !userManagementForm.controls['ISIN'].errors?.required  && userManagementForm.controls['ISIN'].errors?.maxlength ? true: false"
+                                            class="error">
+                                            ISIN length should be max 15 characters.
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 form-group">
+                                        <label for="AvaloqID">Avaloq ID</label>
+                                        <input type="text" formControlName="AvaloqID" maxlength="15" (keypress)="numberOnly($event)" name="AvaloqID" class="form-control" id="AvaloqID"
+                                            (keyup)="error=''" autocomplete="off">
+
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['AvaloqID'].errors?.required" class="error">
+                                            Please enter AvaloqID number
+                                        </div>
+                                        <div *ngIf="isSubmitted  && !userManagementForm.controls['AvaloqID'].errors?.required && userManagementForm.controls['AvaloqID'].errors?.numeric ? true: false"
+                                            class="error">
+                                            Please enter a valid AvaloqID number
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['AvaloqID'].errors?.required && !userManagementForm.controls['AvaloqID'].errors?.numeric && userManagementForm.controls['AvaloqID'].errors?.minlength ? true: false"
+                                            class="error">
+                                            AvaloqID length should be min 8 characters.
+                                        </div>
+                                        <div *ngIf="isSubmitted && !userManagementForm.controls['AvaloqID'].errors?.required && userManagementForm.controls['AvaloqID'].errors?.maxlength ? true: false"
+                                            class="error">
+                                            AvaloqID length should be max 15 characters.
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 form-group">
+                                        <label for="Requester">Requester</label>
+                                        <input type="text" formControlName="Requester" name="Requester" maxlength="50" class="form-control" id="Requester" (keyup)="error=''" autocomplete="off">
+                                    </div>
+
+
+                                    <div class="col-md-6 form-group">
+                                        <label for="AssignTo">Assign To</label>
+                                        <input type="text" formControlName="AssignTo" name="Password" class="form-control" id="AssignTo" (keyup)="error=''" autocomplete="off">
+                                        <div *ngIf="isSubmitted && userManagementForm.controls['AssignTo'].errors?.required" class="error">
+                                          Please enter a password
+                                        </div>
+                                      </div>
+
+
+
+                                </div>
+                                <div class=" modal-footer">
+                                    <button type="button" class="btn btn-danger" [disabled]="disabled" data-dismiss="modal" (click)="Close()">Close</button>
+                                    <button type="submit" class="btn btn-navy" [disabled]="disabled" *ngIf="!update">Save</button>
+                                    <button type="submit" class="btn btn-navy" [disabled]="disabled" *ngIf="update">Update</button>
+                                </div>
+                            </form>
+                            <!-- Tab Content1 Ends-->
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+  <!-- delete modal -->
+  <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+        <p class="text-center mt-3 alert-confirm">Are you sure want to delete <b>{{deleteUserName}}</b>?</p>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-danger modal-close" data-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-navy" (click)="deleteUserConfirm()">Yes</button>
+      </div>
+    </div>
+  </div>
+  </div>

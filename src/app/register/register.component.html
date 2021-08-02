@@ -1,0 +1,223 @@
+<div class="login register">
+  <p-toast position="top-right" [style]="{marginTop: '80px'}"></p-toast>
+  <div class="container">
+    <div class="row justify-content-center min-vh-100 align-items-center">
+      <div class="col-md-6">
+
+        <div class="login-section align-self-center">
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <div class="card h-100 border-0 rounded-0">
+                <div class="card-body">
+                  <div class="card-img d-flex justify-content-between">
+                    <a [routerLink]="['/home']" class="home-link"><i class="fa fa-home"></i></a>
+                    <img src="assets/img/udp-logo.png" class="login-logo">
+                  </div>
+
+                  <form [formGroup]="clientAdministrationForm" (ngSubmit)="submitForm(clientAdministrationForm.value)"
+                    autocomplete="off">
+                    <h5 class="card-title">Register</h5>
+                    <div class="form-row">
+
+                      <div class="col-md-12 form-group">
+                        <label for="OrganizationName">Organization Name</label>
+                        <input type="text" formControlName="OrganizationName" name="OrganizationName"
+                          class="form-control" id="OrganizationName" maxlength="50" (keyup)="error=''"
+                          autocomplete="off">
+                        <!-- <control-messages [control]="getFields['OrganizationName']" [message]="'Please enter a valid organization name'" [customMessage]="'Please enter organization name'"></control-messages> -->
+                        <div
+                          *ngIf="isSubmitted && clientAdministrationForm.controls['OrganizationName'].errors?.required"
+                          class="error">
+                          Please enter organization name
+                        </div>
+                        <div
+                          *ngIf="isSubmitted && !clientAdministrationForm.controls['OrganizationName'].errors?.required && clientAdministrationForm.controls['OrganizationName'].errors?.blankWhitespace"
+                          class="error">
+                          Please enter a valid organization name
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-6 form-group">
+                        <label for="WebUrl">Website</label>
+                        <input type="text" formControlName="WebUrl" name="WebUrl" class="form-control" id="WebUrl" maxlength="200"
+                          (keyup)="error=''" autocomplete="off">
+                        <!-- <control-messages [control]="getFields['WebUrl']" [message]="'Web url'"
+                          [customMessage]="'Web url is invalid'"></control-messages> -->
+                        <div *ngIf="isSubmitted && clientAdministrationForm.controls['WebUrl'].errors?.required"
+                          class="error">
+                          Please enter a web url
+                        </div>
+                        <div
+                          *ngIf="isSubmitted && !clientAdministrationForm.controls['WebUrl'].errors?.required && clientAdministrationForm.controls['WebUrl'].errors?.url"
+                          class="error">
+                          Please enter a valid web url
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 form-group">
+                        <label for="PhoneNumber">Phone Number</label>
+                        <input type="text" formControlName="PhoneNumber" (paste)="false;" (keypress)="numberOnly($event)"
+                          name="PhoneNumber" class="form-control" id="PhoneNumber" (keyup)="error=''" maxlength="15"
+                          autocomplete="off">
+                        <!-- <control-messages [control]="getFields['PhoneNumber']" [message]="'Phone number'"
+                          [customMessage]="''"></control-messages> -->
+                        <div *ngIf="isSubmitted && clientAdministrationForm.controls['PhoneNumber'].errors?.required"
+                          class="error">
+                          Please enter phone number
+                        </div>
+                        <div
+                          *ngIf="isSubmitted && !clientAdministrationForm.controls['PhoneNumber'].errors?.required && clientAdministrationForm.controls['PhoneNumber'].errors?.numeric"
+                          class="error">
+                          Please enter a valid phone number
+                        </div>
+                        <div
+                          *ngIf="isSubmitted && !clientAdministrationForm.controls['PhoneNumber'].errors?.required && !clientAdministrationForm.controls['PhoneNumber'].errors?.numeric && clientAdministrationForm.controls['PhoneNumber'].errors?.minlength ? true: false || !clientAdministrationForm.controls['PhoneNumber'].errors?.numeric && clientAdministrationForm.controls['PhoneNumber'].errors?.maxlength ? true: false"
+                          class="error">
+                          Minimum length should be 8 to 15 characters
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 form-group">
+                        <label for="Address">Address</label>
+                        <textarea type="text" formControlName="Address" maxlength="200" name="Address"
+                          class="form-control" id="Address" (keyup)="error=''" autocomplete="off"></textarea>
+                        <!-- <control-messages [control]="getFields['Address']" [message]="'Address'"
+                          [customMessage]="'Please enter valid address'"></control-messages> -->
+                          <div
+                          *ngIf="isSubmitted && clientAdministrationForm.controls['Address'].errors?.required"
+                          class="error">
+                          Please enter the address
+                        </div>
+                        <div
+                          *ngIf="isSubmitted && !clientAdministrationForm.controls['Address'].errors?.required && clientAdministrationForm.controls['Address'].errors?.blankWhitespace"
+                          class="error">
+                          Please enter a valid address
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 form-group">
+                        <label for="FirstName">First Name</label>
+                        <input type="text" formControlName="FirstName" name="FirstName" class="form-control"
+                          id="FirstName" maxlength="50" (keyup)="error=''" autocomplete="off">
+                        <!-- <control-messages [control]="getFields['FirstName']" [message]="'First name'"
+                          [customMessage]="''"></control-messages> -->
+                          <div
+                          *ngIf="isSubmitted && clientAdministrationForm.controls['FirstName'].errors?.required"
+                          class="error">
+                          Please enter first name
+                        </div>
+                        <div
+                          *ngIf="isSubmitted && !clientAdministrationForm.controls['FirstName'].errors?.required && clientAdministrationForm.controls['FirstName'].errors?.alphabetical"
+                          class="error">
+                          Please enter a valid first name
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 form-group">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" formControlName="LastName" name="LastName" class="form-control" id="LastName"
+                          maxlength="50" (keyup)="error=''" autocomplete="off">
+                        <!-- <control-messages [control]="getFields['LastName']" [message]="'Last name'"
+                          [customMessage]="''"></control-messages> -->
+                          <div
+                          *ngIf="isSubmitted && clientAdministrationForm.controls['LastName'].errors?.required"
+                          class="error">
+                          Please enter last name
+                        </div>
+                        <div
+                          *ngIf="isSubmitted && !clientAdministrationForm.controls['LastName'].errors?.required && clientAdministrationForm.controls['LastName'].errors?.alphabetical"
+                          class="error">
+                          Please enter a valid last name
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 form-group">
+                        <label for="Email">Email</label>
+                        <input type="text" formControlName="Email" maxlength="50" name="Email" class="form-control"
+                          id="Email" (keyup)="error=''" autocomplete="off">
+                        <!-- <control-messages [control]="getFields['Email']" [message]="'Email'"
+                          [customMessage]="'Email is invalid'"></control-messages> -->
+                          <div
+                          *ngIf="isSubmitted && clientAdministrationForm.controls['Email'].errors?.required"
+                          class="error">
+                          Please enter email address
+                        </div>
+                        <div
+                          *ngIf="isSubmitted && !clientAdministrationForm.controls['Email'].errors?.required && clientAdministrationForm.controls['Email'].errors?.email"
+                          class="error">
+                          Please enter a valid email address
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 form-group">
+                        <label for="Password">Password </label>&nbsp;<a href="javascript:void(0)" id="pwdToolTip"
+                          class="red-tooltip"><i class="fa fa-info-circle text-danger"></i></a>
+                        <div class="custom-pwd-tooltip">
+                          <ul>
+                            <li class="font-weight-bold">Password must contain:</li>
+                            <li>Atleast one uppercase.</li>
+                            <li>Atleast one lowercase.</li>
+                            <li>Atleast one number.</li>
+                            <li>Atleast one special character.</li>
+                            <li>MIN 8 and MAX 15 characters.</li>
+
+                          </ul>
+                        </div>
+                        <span class="pwd-eye"><i *ngIf="!showPassword" (click)="showPassword = true;"
+                            class="fa fa-eye-slash"></i><i *ngIf="showPassword" (click)="showPassword = false;"
+                            class="fa fa-eye"></i></span>
+                        <input type="password" *ngIf="!showPassword" (paste)="false;" formControlName="Password"
+                          name="Password" class="form-control" id="Password" (keyup)="error=''" maxlength="15"
+                          autocomplete="new-password">
+                        <input type="text" *ngIf="showPassword" (paste)="false;" formControlName="Password"
+                          name="Password" class="form-control" id="Password" (keyup)="error=''" maxlength="15"
+                          autocomplete="new-password">
+
+
+
+                        <!-- <control-messages [control]="getFields['Password']" [message]="'Password'"
+                          [customMessage]="'Please enter a valid Password'"></control-messages> -->
+                          <div
+                          *ngIf="isSubmitted && clientAdministrationForm.controls['Password'].errors?.required"
+                          class="error">
+                          Please enter password
+                        </div>
+                        <div *ngIf="isSubmitted && !clientAdministrationForm.controls['Password'].errors?.required && ValidatePassword(clientAdministrationForm.controls['Password'].value) && PasswordErrorMessage != 'true'"
+                        class="error">
+                        {{ PasswordErrorMessage }}
+                      </div>
+                      </div>
+
+                      <!-- <div class="column form-group align-self-end">
+                          <label for="epass" class="mr-3">Active</label>
+                          <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" formControlName="active" value="true" name="active" class="custom-control-input"
+                              [(ngModel)]="selectedValue">
+                            <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                          </div>
+                          <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" value="false" formControlName="active" name="active" class="custom-control-input"
+                              [(ngModel)]="selectedValue">
+                            <label class="custom-control-label" for="customRadioInline2">No</label>
+                          </div>
+                        </div> -->
+
+                    </div>
+                    <div class="mb-4 mt-3">
+                      <button type="submit" class="btn btn-primary  btn-block" [disabled]="disabled">Register</button>
+                    </div>
+                  </form>
+                  <div class="text-center">
+                    <p class="m-0"><small>Back to <a [routerLink]="['/login']">Login</a></small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

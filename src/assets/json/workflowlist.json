@@ -1,0 +1,232 @@
+{
+    "data": [{
+        "categoryId": 1,
+        "categroyName": "FINANCE AND ACCOUNTING",
+        "botList": [{
+          "id": 11,
+          "categoryId": 1,
+          "botType": "botType 1",
+          "botTypeId": 1,
+          "cName": "10-K Financial Data Extraction",
+          "Description": "Extracts financial information from 10-k filling",
+          "details": {
+            "botId": 8,
+            "BotName": "Address Extraction - US",
+            "Price": "US$ 50/yr",
+            "CreatedDate": "23-Jun-2009",
+            "UpdatedDate": "06-Jan-2020",
+            "Version": "11.1.5",
+            "Category": "Company Information",
+            "SupportEnvironment": "AWS / Azure / Alibaba / GCloud",
+            "SupportDetails": "Support@techmobius.com",
+            "phone": "+1 302-202-6600",
+            "description": "Identifies and extracts all  'US' addrsses from the given html file. Address Line 1, Address Line 2, City, State,  Zip, Fax, Phone attributes will be extracted.",
+            "dataPoints": {
+              "inputAttributes": ["MOB_ID", "Client_ID", " S3-Path", "Html_File_Name"],
+              "outputAttributes": ["ADDRESS_BLOCK", "ADDRESS_CN", "ADDRESS_CONFIDENCE", "ADDRESS_LINE", "HEAD_QUARTERS",
+                "ADDRESS_TAGS", "ALL_EMAIL", "ALL_FAX", "ALL_PHONE",
+                "CITY", "COPYRIGHT_CN", "REL_EMAIL", "REL_FAX", "REL_PHONE"]
+            }
+          }
+        },
+        {
+          "id": 12,
+          "categoryId": 1,
+          "botType": "botType 2",
+          "botTypeId": 2,
+          "cName": "Address Splitter - FA",
+          "Description": "Address parser helps to split the address information into",
+          "details": {
+            "botId": 9,
+            "BotName": "Address Extraction - US",
+            "Price": "US$ 50/yr",
+            "CreatedDate": "23-Jun-2009",
+            "UpdatedDate": "06-Jan-2020",
+            "Version": "11.1.5",
+            "Category": "Company Information",
+            "SupportEnvironment": "AWS / Azure / Alibaba / GCloud",
+            "SupportDetails": "Support@techmobius.com",
+            "phone": "+1 302-202-6600",
+            "description": "Identifies and extracts all  'US' addrsses from the given html file. Address Line 1, Address Line 2, City, State,  Zip, Fax, Phone attributes will be extracted.",
+            "dataPoints": {
+              "inputAttributes": ["MOB_ID", "Client_ID", " S3-Path", "Html_File_Name"],
+              "outputAttributes": ["ADDRESS_BLOCK", "ADDRESS_CN", "ADDRESS_CONFIDENCE", "ADDRESS_LINE", "HEAD_QUARTERS",
+                "ADDRESS_TAGS", "ALL_EMAIL", "ALL_FAX", "ALL_PHONE",
+                "CITY", "COPYRIGHT_CN", "REL_EMAIL", "REL_FAX", "REL_PHONE"]
+            }
+          }
+        },
+        {
+          "id": 13,
+          "categoryId": 1,
+          "botType": "botType 3",
+          "botTypeId": 3,
+          "cName": "CSV to MDB Converter - FA",
+          "Description": "Converts CSV files to MIS-Access tables",
+          "details": {
+            "botId": 1,
+            "BotName": "Address Extraction - US",
+            "Price": "US$ 50/yr",
+            "CreatedDate": "23-Jun-2009",
+            "UpdatedDate": "06-Jan-2020",
+            "Version": "11.1.5",
+            "Category": "Company Information",
+            "SupportEnvironment": "AWS / Azure / Alibaba / GCloud",
+            "SupportDetails": "Support@techmobius.com",
+            "phone": "+1 302-202-6600",
+            "description": "Identifies and extracts all  'US' addrsses from the given html file. Address Line 1, Address Line 2, City, State,  Zip, Fax, Phone attributes will be extracted.",
+            "dataPoints": {
+              "inputAttributes": ["MOB_ID", "Client_ID", " S3-Path", "Html_File_Name"],
+              "outputAttributes": ["ADDRESS_BLOCK", "ADDRESS_CN", "ADDRESS_CONFIDENCE", "ADDRESS_LINE", "HEAD_QUARTERS",
+                "ADDRESS_TAGS", "ALL_EMAIL", "ALL_FAX", "ALL_PHONE",
+                "CITY", "COPYRIGHT_CN", "REL_EMAIL", "REL_FAX", "REL_PHONE"]
+            }
+          }
+        },
+        {
+          "id": 14,
+          "categoryId": 1,
+          "botType": "botType 2",
+          "botTypeId": 2,
+          "cName": "Email ID Classification - FA",
+          "Description": "Categorizes the provided emails as business emails.",
+          "details": {
+            "botId": 2,
+            "BotName": "Address Extraction - US",
+            "Price": "US$ 50/yr",
+            "CreatedDate": "23-Jun-2009",
+            "UpdatedDate": "06-Jan-2020",
+            "Version": "11.1.5",
+            "Category": "Company Information",
+            "SupportEnvironment": "AWS / Azure / Alibaba / GCloud",
+            "SupportDetails": "Support@techmobius.com",
+            "phone": "+1 302-202-6600",
+            "description": "Identifies and extracts all  'US' addrsses from the given html file. Address Line 1, Address Line 2, City, State,  Zip, Fax, Phone attributes will be extracted.",
+            "dataPoints": {
+              "inputAttributes": ["MOB_ID", "Client_ID", " S3-Path", "Html_File_Name"],
+              "outputAttributes": ["ADDRESS_BLOCK", "ADDRESS_CN", "ADDRESS_CONFIDENCE", "ADDRESS_LINE", "HEAD_QUARTERS",
+                "ADDRESS_TAGS", "ALL_EMAIL", "ALL_FAX", "ALL_PHONE",
+                "CITY", "COPYRIGHT_CN", "REL_EMAIL", "REL_FAX", "REL_PHONE"]
+            }
+          }
+        }
+    
+        ]
+      },
+      {
+        "categoryId": 2,
+        "categroyName": "HUMAN RESOURCES",
+        "botList": [{
+          "id": 22,
+          "categoryId": 2,
+          "botType": "botType 4",
+          "botTypeId": 4,
+          "cName": "10-K Financial Data Extraction - HR",
+          "Description": "Extracts financial information from 10-k fillings",
+          "details": {
+            "botId": 3,
+            "BotName": "Address Extraction - US",
+            "Price": "US$ 50/yr",
+            "CreatedDate": "23-Jun-2009",
+            "UpdatedDate": "06-Jan-2020",
+            "Version": "11.1.5",
+            "Category": "Company Information",
+            "SupportEnvironment": "AWS / Azure / Alibaba / GCloud",
+            "SupportDetails": "Support@techmobius.com",
+            "phone": "+1 302-202-6600",
+            "description": "Identifies and extracts all  'US' addrsses from the given html file. Address Line 1, Address Line 2, City, State,  Zip, Fax, Phone attributes will be extracted.",
+            "dataPoints": {
+              "inputAttributes": ["MOB_ID", "Client_ID", " S3-Path", "Html_File_Name"],
+              "outputAttributes": ["ADDRESS_BLOCK", "ADDRESS_CN", "ADDRESS_CONFIDENCE", "ADDRESS_LINE", "HEAD_QUARTERS",
+                "ADDRESS_TAGS", "ALL_EMAIL", "ALL_FAX", "ALL_PHONE",
+                "CITY", "COPYRIGHT_CN", "REL_EMAIL", "REL_FAX", "REL_PHONE"]
+            }
+          }
+        },
+        {
+          "id": 23,
+          "categoryId": 2,
+          "botType": "botType 2",
+          "botTypeId": 2,
+          "cName": "Address Splitter - HR",
+          "Description": "Address parser helps to split the address information into",
+          "details": {
+            "botId": 4,
+            "BotName": "Address Extraction - US",
+            "Price": "US$ 50/yr",
+            "CreatedDate": "23-Jun-2009",
+            "UpdatedDate": "06-Jan-2020",
+            "Version": "11.1.5",
+            "Category": "Company Information",
+            "SupportEnvironment": "AWS / Azure / Alibaba / GCloud",
+            "SupportDetails": "Support@techmobius.com",
+            "phone": "+1 302-202-6600",
+            "description": "Identifies and extracts all  'US' addrsses from the given html file. Address Line 1, Address Line 2, City, State,  Zip, Fax, Phone attributes will be extracted.",
+            "dataPoints": {
+              "inputAttributes": ["MOB_ID", "Client_ID", " S3-Path", "Html_File_Name"],
+              "outputAttributes": ["ADDRESS_BLOCK", "ADDRESS_CN", "ADDRESS_CONFIDENCE", "ADDRESS_LINE", "HEAD_QUARTERS",
+                "ADDRESS_TAGS", "ALL_EMAIL", "ALL_FAX", "ALL_PHONE",
+                "CITY", "COPYRIGHT_CN", "REL_EMAIL", "REL_FAX", "REL_PHONE"]
+            }
+          }
+        },
+        {
+          "id": 24,
+          "categoryId": 2,
+          "botType": "botType 1",
+          "botTypeId": 1,
+          "cName": "CSV to MDB Converter - HR",
+          "Description": "Converts CSV files to MIS-Access tables",
+          "details": {
+            "botId": 5,
+            "BotName": "Address Extraction - US",
+            "Price": "US$ 50/yr",
+            "CreatedDate": "23-Jun-2009",
+            "UpdatedDate": "06-Jan-2020",
+            "Version": "11.1.5",
+            "Category": "Company Information",
+            "SupportEnvironment": "AWS / Azure / Alibaba / GCloud",
+            "SupportDetails": "Support@techmobius.com",
+            "phone": "+1 302-202-6600",
+            "description": "Identifies and extracts all  'US' addrsses from the given html file. Address Line 1, Address Line 2, City, State,  Zip, Fax, Phone attributes will be extracted.",
+            "dataPoints": {
+              "inputAttributes": ["MOB_ID", "Client_ID", " S3-Path", "Html_File_Name"],
+              "outputAttributes": ["ADDRESS_BLOCK", "ADDRESS_CN", "ADDRESS_CONFIDENCE", "ADDRESS_LINE", "HEAD_QUARTERS",
+                "ADDRESS_TAGS", "ALL_EMAIL", "ALL_FAX", "ALL_PHONE",
+                "CITY", "COPYRIGHT_CN", "REL_EMAIL", "REL_FAX", "REL_PHONE"]
+            }
+          }
+        },
+        {
+          "id": 25,
+          "categoryId": 2,
+          "botType": "botType 3",
+          "botTypeId": 3,
+          "cName": "Email ID Classification - HR",
+          "Description": "Categorizes the provided emails as business emails.",
+          "details": {
+            "botId": 6,
+            "BotName": "Address Extraction - US",
+            "Price": "US$ 50/yr",
+            "CreatedDate": "23-Jun-2009",
+            "UpdatedDate": "06-Jan-2020",
+            "Version": "11.1.5",
+            "Category": "Company Information",
+            "SupportEnvironment": "AWS / Azure / Alibaba / GCloud",
+            "SupportDetails": "Support@techmobius.com",
+            "phone": "+1 302-202-6600",
+            "description": "Identifies and extracts all  'US' addrsses from the given html file. Address Line 1, Address Line 2, City, State,  Zip, Fax, Phone attributes will be extracted.",
+            "dataPoints": {
+              "inputAttributes": ["MOB_ID", "Client_ID", " S3-Path", "Html_File_Name"],
+              "outputAttributes": ["ADDRESS_BLOCK", "ADDRESS_CN", "ADDRESS_CONFIDENCE", "ADDRESS_LINE", "HEAD_QUARTERS",
+                "ADDRESS_TAGS", "ALL_EMAIL", "ALL_FAX", "ALL_PHONE",
+                "CITY", "COPYRIGHT_CN", "REL_EMAIL", "REL_FAX", "REL_PHONE"]
+            }
+          }
+        }
+    
+        ]
+      }
+    
+      ]
+}

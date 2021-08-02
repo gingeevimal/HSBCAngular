@@ -1,0 +1,347 @@
+<div class="content-section" id="fullscreen" [ngClass]="{'ml-0': !showSideBar}">
+    <div class="row project-list">
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 form-group">
+        <div class="card">
+          <div class="dashboard-card">
+            <div class="dashboard-icon orange-gradient"> <i class="far fa-window-restore"></i> </div>
+            <div class="dashboard-list">
+              <div class="dash-board-title">Live Projects</div>
+              <h2>{{dashboardData.liveProjects}}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 form-group">
+        <div class="card">
+          <div class="dashboard-card">
+            <div class="dashboard-icon green-gradient"> <i class="far fa-copy"></i> </div>
+            <div class="dashboard-list">
+              <div class="dash-board-title">Live Jobs</div>
+              <h2>{{dashboardData.liveJobs}}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 form-group">
+        <div class="card">
+          <div class="dashboard-card">
+            <div class="dashboard-icon light-blue-gradient"> <i class="fas fa-table"></i> </div>
+            <div class="dashboard-list">
+              <div class="dash-board-title">Data Points</div>
+              <h2>{{dashboardData.dataPoints}}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 form-group">
+        <div class="card">
+          <div class="dashboard-card">
+            <div class="dashboard-icon blue-gradient"> <i class="fas fa-user-friends"></i> </div>
+            <div class="dashboard-list">
+              <div class="dash-board-title">Users</div>
+              <h2>{{dashboardData.users}}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+      <div class="col-12">
+          <div class="accordion" id="dashboard-accordion">
+    <div class="accordion-card" *ngFor="let project of projects; let i = index">
+      <div class="accordion-header" id="heading{{i}}" data-toggle="collapse" 
+       [attr.data-target]="'#collapse_' + i" [attr.aria-controls]="'#collapse_' + i" aria-expanded="true" >
+      <div class="project-info">
+          <div class="project-img">
+          <img src="{{project.logoImgURL}}">
+          </div>
+          <div class="project-name">
+         {{project.projectName}}
+          </div>
+          </div>
+          <div class="project-detail">
+            <ul>
+            <li class="total">
+              <h6>{{project.totalJobs}} <span class="font11 font-weight-normal">Total Jobs</span></h6>			
+              </li>
+              <li class="inprogress">
+              <h6>{{project.inProgress}} <span class="font11 font-weight-normal">In Progress</span></h6>			
+              </li>
+              <li class="overdue">
+              <h6>{{project.overDue}} <span class="font11 font-weight-normal">Overdue</span></h6>			
+              </li>
+            </ul>
+            </div>
+      
+      </div>
+      <div  id="collapse_{{ i }}"  class="collapse"  data-parent="#dashboard-accordion">
+        <div class="accordion-body">
+          <div class="mb-3"><input type="text" class="form-control font-12  col-12 col-sm-6 col-md-3 ml-auto" placeholder="Search by keyword"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"></div>
+          <div class="table-responsive dashboard-table font-12">
+            <p-table #dt class=""  [value]="project.detailsData" [paginator]="false"   [(selection)]="selectedTableUser" dataKey="jobName"
+            [rowsPerPageOptions]="[5,10,25,50,100,500]" [rows]="5" rowHover="true"
+            sortMode="multiple" [responsive]="true" exportFilename="UserGroupList_Details" [globalFilterFields]="['jobName', 'initiatedBy']">
+
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="text-center" >#</th>
+                <th>Job Name</th>
+                <th>Initiated By</th>
+                <th class="text-center">Initiated Time</th>
+                <th class="text-center">Job Status</th>
+                <th class="text-center">Stage</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-data let-a="rowIndex">
+              <tr>
+                <td class="text-center">{{a+1}}</td>
+                      <td>{{data.jobName}}</td>
+                      <td>{{data.initiatedBy}}</td>
+                      <td  class="text-center">{{data.initiatedTime | date: 'dd/MM/y h:mm a'}}</td>
+                      <td  class="text-center">
+                        <i class="fas fa-square " [ngClass]="{'text-success': data.status === 1 ? true : false, 'text-danger': data.status === 0 ? true :false, 'text-warning': data.status === 2 ? true :false }"></i>
+                      </td>
+                      <td class="text-center">{{data.stage}}</td>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td class="text-center" [attr.colspan]="6">
+                  <b>No records found</b>
+                </td>
+              </tr>
+            </ng-template>
+
+          </p-table>
+
+                      </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+          </div>	
+      </div>
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="card">
+          <div class="card-header">
+            <h5>Activity Log</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-inline justify-content-end activity-filter">
+                  <p-dropdown [options]="projects" class="mr-2 p-dropdown-custom" placeholder="All Projects" optionLabel="projectName"
+                  [style]="{'width':'100%','font-size':'12px','border-radius':'0','border':'1px solid #ced4da'}"
+                  [showClear]="true"></p-dropdown>
+                   <p-dropdown [options]="users" class="p-dropdown-custom"   placeholder="All Users" optionLabel="userName" 
+                   [style]="{'width':'100%','font-size':'12px','border-radius':'0','border':'1px solid #ced4da'}"
+                   [showClear]="true"></p-dropdown>
+                  
+                </div>
+               
+              </div>
+              <div class="col-12 pt-3">
+                <div class="">
+                  <input type="text" (input)="onSearchChange($event.target.value)" class="form-control ml-2 mb-2 float-right font-12 activity-input" placeholder="Search by keyword">
+                </div> 
+              </div>
+            </div>
+            <div class="dashboard-section">
+              <ul class="list-group list-group-flush activity-log">
+              
+                <li class="list-group-item" *ngFor="let activity of activityLogs">
+                  <div class="user-list">
+                    <div class="user-details">
+                      <div class="user-name">{{activity.userName}}</div>
+                      <div class="user-designation">Developer - <span>{{activity.developer}}</span></div>
+                    </div>
+                    <div class="user-log">
+                      <div class="user-date"> {{activity.createdDateTime | date : 'dd/MM/y h:mm a'}} </div>
+                    </div>
+                  </div>
+                  <div class="user-description"> Ticket No. {{activity.ticketNo}} {{activity.text}} </div>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between">
+            <h5>Ticket Log</h5>
+              <div class="header-inputs">
+              <div class="dropdown download-link">
+                      <a class="download-icon" >
+                       <a id="reportrange">
+                        <i class="far fa-calendar-alt mr-2"></i> 
+    <span class="font-12" id="dateDisplay"></span>
+                       </a>
+                      </a>
+                    
+                  </div>
+              </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 px-4">
+                <div class="owl-carousel owl-theme ticket-section">
+                  <div class="item"> <a href="javascript:void(0);">
+                    <div class="tickets">
+                      <div class="ticket-info text-light-blue">
+                        <h4>{{ticketLogFilter[0].count}}</h4>
+                        <p>Worked</p>
+                      </div>
+                    </div>
+                    </a> </div>
+                  <div class="item"> <a href="javascript:void(0);">
+                    <div class="tickets">
+                      <div class="ticket-info text-green">
+                        <h4>{{ticketLogFilter[1].count}}</h4>
+                        <p>Completed</p>
+                      </div>
+                    </div>
+                    </a> </div>
+                  <div class="item"> <a href="javascript:void(0);">
+                    <div class="tickets">
+                      <div class="ticket-info text-orange">
+                        <h4>{{ticketLogFilter[2].count}}</h4>
+                        <p>Re-Opened</p>
+                      </div>
+                    </div>
+                    </a> </div>
+                  <div class="item"> <a href="">
+                    <div class="tickets">
+                      <div class="ticket-info text-red">
+                        <h4>{{ticketLogFilter[3].count}}</h4>
+                        <p>Overdue Tickets</p>
+                      </div>
+                    </div>
+                    </a> </div>
+                  <div class="item"> <a href="javascript:void(0);">
+                    <div class="tickets">
+                      <div class="ticket-info text-light-blue">
+                        <h4>{{ticketLogFilter[4].count}}</h4>
+                        <p>Inbound Tickets</p>
+                      </div>
+                    </div>
+                    </a> </div>
+                  <div class="item"> <a href="javascript:void(0);">
+                    <div class="tickets">
+                      <div class="ticket-info text-orange">
+                        <h4>{{ticketLogFilter[5].count}}</h4>
+                        <p>Aging Tickets</p>
+                      </div>
+                    </div>
+                    </a> </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-3"><input type="text" class="form-control font-12  col-12 col-sm-6 col-md-3 ml-auto" placeholder="Search by keyword"
+                  (input)="tl.filterGlobal($event.target.value, 'contains')"></div>
+                  <div class="table-responsive dashboard-table">
+                    <p-table #tl class=""  [value]="ticketLogs" [paginator]="false"   [(selection)]="selectedTableUser" dataKey="jobName"
+                    [rowsPerPageOptions]="[5,10,25,50,100,500]" [rows]="5" rowHover="true"
+                    sortMode="multiple" [responsive]="true" exportFilename="UserGroupList_Details" [globalFilterFields]="['project', 'subject', 'assigned', 'ticketNo']">
+        
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th class="text-center" >#</th>
+                        <th>Project</th>
+                        <th class="w-13rem">Subject</th>
+                        <th >Assigned</th>
+                        <th >Updated</th>
+                       
+                      </tr>
+                    </ng-template>
+        
+                    <ng-template pTemplate="body" let-data let-a="rowIndex">
+                      <tr>
+                        <td class="text-center">{{data.ticketNo}}</td>
+                              <td>{{data.project}}</td>
+                              <td>{{data.subject}}</td>
+                              <td  >{{data.assigned }}</td>
+                            <td>{{data.updatedTime | date: 'dd/MM/y h:mm a'}}</td>
+                      </tr>
+                    </ng-template>
+        
+                    <ng-template pTemplate="emptymessage">
+                      <tr>
+                        <td class="text-center" [attr.colspan]="5">
+                          <b>No records found</b>
+                        </td>
+                      </tr>
+                    </ng-template>
+        
+                  </p-table>
+        
+
+                <!-- <table class="table font12">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Project</th>
+                      <th>Subject</th>
+                      <th>Assigned</th>
+                      <th>Updated</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1234</td>
+                      <td>Lexis Nexis</td>
+                      <td>Dodge - Mails to be triggered for scheduled runs</td>
+                      <td>Mark</td>
+                        <td>02/12/2020 11:02 AM</td>
+                    </tr>
+                    <tr>
+                      <td>2345</td>
+                      <td>Lexis Nexis</td>
+                      <td>Output not obtained for Dodge</td>
+                      <td>Thornton</td>
+                      <td>02/12/2020 10:44 AM</td>
+                    </tr>
+                    <tr>
+                      <td>3456</td>
+                      <td>Lexis Nexis</td>
+                      <td>Configure and enable spot instance for Mobito production environment</td>
+                      <td>Larry</td>
+                        <td>02/12/2020 10:12 AM</td>
+                    </tr>
+                       <tr>
+                      <td>4567</td>
+                      <td>Lexis Nexis</td>
+                      <td>Job feeder not working</td>
+                      <td>Smith</td>
+                      <td>02/12/2020 09:18 AM</td>
+                    </tr>
+                      <tr>
+                      <td>5678</td>
+                      <td>Lexis Nexis</td>
+                      <td>Job reports for all bots return 0 records</td>
+                      <td>John</td>
+                      <td>02/12/2020 09:18 AM</td>
+                    </tr>
+                  </tbody>
+                </table> -->
+                      </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-bottom">
+      <p>Copyright © 2020 <span class="text-blue">Unified Data Platform</span> - All rights reserved. </p>
+    </div>
+  </footer>

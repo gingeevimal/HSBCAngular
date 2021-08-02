@@ -1,0 +1,303 @@
+.font-12{
+	font-size: 12px;
+}
+.project-list .card{
+	margin-top: 1rem;
+}
+.project-list .dashboard-card{
+	position: relative;
+	
+}
+.project-list .dashboard-icon{	
+	font-size: 32px;
+	color:#fff;
+	position: absolute;
+	margin-top:-1rem;
+	margin-left: 1rem;
+	border-radius: 3px;
+	width: 70px;
+	height: 70px;
+	text-align: center;
+	line-height: 70px;
+	box-shadow: 0 6px 0 0 rgba(0,0,0,0.01),0 15px 32px 0 rgba(0,0,0,0.06);
+}
+.project-list .dashboard-list{
+	padding: 1rem;
+	line-height: 1;
+	margin-left: 80px;
+	text-align: right;
+}
+.project-list .dashboard-list h2{
+	margin-bottom: 0;
+}
+.project-list .dash-board-title{
+	margin-bottom: .5rem;
+}
+.orange-gradient{
+	background: linear-gradient(60deg,#ffa726,#fb8c00);
+}
+.green-gradient{
+	background: linear-gradient(60deg,#66bb6a,#43a047);
+}
+.light-blue-gradient{
+	background: linear-gradient(60deg,#26c6da,#00acc1);
+}
+.blue-gradient{
+	background: linear-gradient(60deg, #031845,#0d2f79);
+}
+.red-gradient{
+	background: linear-gradient(60deg,#ef5350,#e53935);
+}
+
+.text-light-blue{
+	color:#00acc1;
+}
+.text-red{
+	color:#e53935;
+}
+.text-green{
+	color:#43a047;
+}
+
+.activity-log .list-group-item{
+	padding: .75rem 0rem;
+}
+.activity-log .user-list{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: .5rem;
+}
+.activity-log .user-name{
+	color: #6B7A89;	
+}
+.activity-log .user-designation{
+	font-size: 11px;
+	color: #999;
+}
+.activity-log .user-designation span{
+	color:#09abdd;
+}
+.activity-log .user-log{
+	font-size: 11px;
+	color: #999;
+}
+.activity-log .user-description{
+	font-size: 12px;
+	color: #666;
+}
+.activity-input{
+	width: 150px;
+    position: relative;
+    top: -5px;
+
+}
+
+.dashboard-section{
+	height: 323px;
+	overflow-y: auto;
+	scrollbar-width: none;
+    -ms-overflow-style: none;	
+}
+.dashboard-section::-webkit-scrollbar { 
+    display: none;  
+}
+.dashboard-table{
+	height: 230px;
+	overflow-y: auto;
+	scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.dashboard-table::-webkit-scrollbar { 
+    display: none;  
+}
+.ticket-section a, .ticket-section a:hover{
+	background: #f2f2f2;
+	text-align: center;
+	padding: 1rem;
+	width:100%;
+	display: block;
+	text-decoration: none;
+	border-radius: 3px;
+	border:1px solid rgba(0,0,0,0.07);
+	color:inherit;
+}
+.ticket-info h4{
+	
+}
+.ticket-info p{
+	margin-bottom: 0;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.header-inputs{
+	padding: 1rem;
+}
+.download-link .download-icon, .download-link .download-icon:hover{
+	color:#999;
+}
+.download-link .dropdown-menu{	
+	min-width:auto;
+	padding: .5rem;
+	border-radius: 2px;
+	box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.2);
+}
+.download-link .dropdown-menu .dropdown-item{
+	font-size: 12px;
+	padding: .5rem .5rem;
+	text-align: left;
+	color:#666666;
+}
+.download-link .dropdown-menu .dropdown-item:hover{
+	background:none;
+	border-radius: 10px;
+	color:#008d62;
+}
+.download-select .dropdown-btn, .download-link .dropdown-btn:hover{
+	color: #495057;
+	font-size: 14px;
+	padding: .375rem .75rem;
+	background: #fff;
+	border: 1px solid #ced4da;
+	border-radius: 0px;
+}
+
+#dashboard-accordion .accordion-card{
+	background:#fff;
+	margin-bottom: 1rem;
+	box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.2);
+}
+#dashboard-accordion .accordion-header{
+	padding: .5rem 1rem;
+	display: flex;
+	justify-content: space-between;
+}
+#dashboard-accordion .accordion-header .project-img{
+	height: 40px;
+	width: 40px;
+	margin-right: 1rem;
+	overflow: hidden;
+	border:1px solid rgba(0,0,0,0.125);
+}
+#dashboard-accordion .accordion-header .project-img img{
+	height: 40px;
+	width: 40px;
+	object-fit: cover;
+}
+#dashboard-accordion .accordion-header .project-info{
+	display: flex;
+}
+#dashboard-accordion .accordion-header .project-info .project-name{	
+	font-size: 15px;
+	font-weight: 500;
+}
+#dashboard-accordion .accordion-header .project-detail ul{
+	padding: 0;
+	margin: 0;
+}
+#dashboard-accordion .accordion-header .project-detail ul li{
+	display: inline-block;
+	font-size: 12px;
+	text-align: center;
+	margin: .3rem;
+	padding:.3rem .5rem;	
+}
+#dashboard-accordion .accordion-header .project-detail ul li h4{
+	line-height: 1;
+	margin-bottom: 5px;
+}
+#dashboard-accordion .accordion-header .project-detail ul li.total{
+	color:#09abdd;
+	background: rgba(9,171,221,0.1);
+	border:1px solid rgba(9,171,221,0.2);
+}
+#dashboard-accordion .accordion-header .project-detail ul li.inprogress{
+	color:#ffa726;
+	background: rgba(255,167,38,0.1);
+	border:1px solid rgba(255,167,38,0.2);
+}
+#dashboard-accordion .accordion-header .project-detail ul li.overdue{
+	color:#e53935;
+	background: rgba(229,57,53,0.1);
+	border:1px solid rgba(229,57,53,0.2);
+}
+#dashboard-accordion .accordion-body{
+	padding: 1rem;
+	border-top:1px solid rgba(0,0,0,0.125);
+}
+
+/* daterangepicker */
+#reportrange{
+cursor: pointer; padding: 5px 10px; width: 100%
+}
+#reportrange:hover{
+text-decoration: underline;
+}
+/* daterangepicekr */
+footer{
+    background: unset;
+}
+
+
+/* table */
+th,td{
+	font-size: 12px !important;
+	border-left:0 !important;
+	border-right:0 !important;
+	padding: .35rem .5rem;
+	color: #858585;
+	border-color: #dee2e6 !important;
+}
+.ui-paginator{
+border:0 !important;
+}
+/* table */
+@media (max-width: 768px) { 
+/*.left-section{
+	width: 0px;	
+	z-index: 99;
+}*/
+
+.content-section {
+	margin-left:0px;
+}
+	
+#dashboard-accordion .accordion-header{
+	padding: .5rem 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+#dashboard-accordion .accordion-header .project-detail ul{
+	padding: 0;
+	margin: 10px 0 0 0;
+	background: #f2f2f2;
+}
+#dashboard-accordion .accordion-header .project-detail ul li{	
+	text-align: left;
+	margin: 0;
+	padding:.3rem .5rem;	
+}
+#dashboard-accordion .accordion-header .project-detail ul li.total{
+	color:#09abdd;
+	background: none;
+	border: none;
+}
+#dashboard-accordion .accordion-header .project-detail ul li.inprogress{
+	color:#ffa726;
+	background: none;
+	border: none;
+}
+#dashboard-accordion .accordion-header .project-detail ul li.overdue{
+	color:#e53935;
+	background: none;
+	border: none;
+}
+#dashboard-accordion .accordion-header .project-detail ul li h4{
+	line-height: 1;
+	margin-bottom: 0px;
+	display: inline-block;
+}
+
+
+}

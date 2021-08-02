@@ -1,0 +1,57 @@
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    /* height: 300px;  */
+    /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+ .try .ui-dialog-titlebar-icons{
+    display: none !important;
+  }
+
+.ui-dialog-titlebar{
+  background-color: #09abdd !important;
+  color: #fff !important;
+}
+.red-tooltip + .tooltip > .tooltip-inner {background-color: #f00;}
+.custom-pwd-tooltip{
+  display:none;
+}
+.custom-pwd-tooltip  ul{
+  
+  list-style: circle;
+  padding: 10px 25px;
+  border:1px solid #ccc;
+  box-shadow:2px 2px 2px  #e2e2e2;
+  position:absolute;
+background:white;
+
+border-radius:5px;
+bottom:35px;
+
+}
+.custom-pwd-tooltip ul li:first-child {
+  font-weight: bold;
+  list-style: none;
+  position: relative;
+  left: -15px;
+}
+#pwdToolTip:hover ~.custom-pwd-tooltip{
+display:block;
+
+}
+
+.pwd-eye{
+  position: absolute;
+    right: 10px;
+    top: 28px;
+}

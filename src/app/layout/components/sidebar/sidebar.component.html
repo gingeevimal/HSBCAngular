@@ -1,0 +1,21 @@
+<div class="left-section"> 
+    <aside id="sidebar">
+              <ul id="sidemenu" class="sidebar-nav" >
+                  <div>
+                    <li [class.active]="isActiveM(['dashboard'])" class="test1">
+                        <a class="test2" [routerLink]="['/dashboard']" (click)="shrservice.setCurrentPage('Dashboard')">                            
+                            <span class="sidebar-title">Dashboard</span>
+                        </a>
+                    </li>
+                   </div>
+                   <div>
+                    <li [class.active]="isActiveM(['UserManagement'])" class="test1">
+                        <a class="test2" [routerLink]="['/UserManagement']" (click)="shrservice.setCurrentPage('User Management')">                            
+                            <span class="sidebar-title">User Management</span>
+                        </a>
+                    </li>
+                   </div>
+              </ul>
+          </aside>         
+    
+</div>   
