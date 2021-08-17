@@ -5,22 +5,6 @@
 export const environment =  {
     production: false,
   
-    // localhost
-    // 'loginServiceUrl': "https://localhost:44321/User/",
-    // 'menuserviceUrl': "https://localhost:44321/MenuMaster/",
-    // 'roleserviceUrl': "https://localhost:44321/MenuMaster/",
-    // 'userGroupserviceUrl': "https://localhost:44321/UserGroup/",
-    // 'clientAdministrationServiceUrl': "https://localhost:44321/ClientDetails/",
-    // 'userManagementServiceUrl': "https://localhost:44321/UserManagement/",
-    // 'servicecatalogUrl': "https://localhost:44321/ServiceCatalog/",
-    // 'roleDefinitionServiceUrl': "https://localhost:44321/RoleDefinition/",
-    // 'projectTypeRegulationServiceUrl': "https://localhost:44321/ProjectTypeRegulation/",
-    // 'projectUserRoleMappingServiceUrl': "https://localhost:44321/ProjectUserRoleMapping/",
-    // 'projectDefinitionServiceUrl': "https://localhost:44321/ProjectDefinition/",
-    // 'clientAdminUserBoardServiceUrl':"https://localhost:44321/AdminUserBoard/",
-    // 'projectConfigurationServiceUrl':"https://localhost:44321/input/",
-    // 'workflowServiceUrl':"https://localhost:44321/Worxtream/workflowapi/"
-
     'loginServiceUrl': "http://18.232.242.41:8000/User/",
     'menuserviceUrl': "http://18.232.242.41:8000/MenuMaster/",
     'roleserviceUrl': "https://localhost:44321/MenuMaster/",
