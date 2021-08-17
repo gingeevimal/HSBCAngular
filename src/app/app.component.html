@@ -1,1 +1,7 @@
 <router-outlet></router-outlet>
+<body>
+    <app-nav-menu [loggedIn]="AuthguardService.loggedIn" (loginClicked)="login()" (logoutClicked)="logout()"></app-nav-menu>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </body>

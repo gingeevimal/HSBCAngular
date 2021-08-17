@@ -38,7 +38,7 @@ export class UserManagementService {
     return this.http.put<any>(this.environment1 + route, data).pipe(map(res => res));
   }
   deleteRequest(route,data) {
-    return this.http.post<any>(this.environment + route,data).pipe(map(res => res))
+    return this.http.delete<any>(this.environment + route,data).pipe(map(res => res))
   }
   deleteRequest1(route) {
     return this.http.delete<any>(this.environment1 + route).pipe(map(res => res))

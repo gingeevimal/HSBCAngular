@@ -12,6 +12,8 @@ import { UserManagementService } from '../../services/user-management.service';
 declare var $: any
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+import { analyzeFile } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.csv';
@@ -202,20 +204,47 @@ this.OrderType();
      }
    
    }
+  // GetUserManagementList() {
+  //   debugger
+  //   $('.spinner').show();
+  //   this.UserManagement.getRequest1('api/v1/CAdocument/GetCAdocument?businesspartner=test').subscribe((UserManagementDetails) => {
+  //     console.log(any);
+  //     debugger
+  //     window.location.href = any;
+
+
+  //     this.userManagement = any;
+  //     this.showCount = true;
+  //     $('.spinner').hide();
+  //   },err=>{
+  //     this.Errormessage(err);
+  //   });
+  // }
+
+
   GetUserManagementList() {
     debugger
-    $('.spinner').show();
-    this.UserManagement.getRequest1('api/v1/CAdocument/GetCAdocument?businesspartner=test').subscribe((UserManagementDetails) => {
-      console.log(UserManagementDetails);
-      debugger
+    //this.UserManagement.getRequest1('api/v1/CAdocument/Login').subscribe((any) => {
 
-      this.userManagement = UserManagementDetails;
-      this.showCount = true;
-      $('.spinner').hide();
-    },err=>{
-      this.Errormessage(err);
-    });
-  }
+    this.http.get(environment.CADServiceUrl + 'api/v1/CAdocument/Login' , {responseType: 'text'}).subscribe(result => {
+      debugger
+      sessionStorage.setItem("UserName", result);
+      //alert(sessionStorage.getItem("UserName"));
+      this.GetUserManagementList1();
+      //window.location.href = result;
+    }, error => console.log(error));}
+
+    GetUserManagementList1() {
+      debugger
+      //this.UserManagement.getRequest1('api/v1/CAdocument/Login').subscribe((any) => {
+  
+      this.http.get(sessionStorage.getItem("UserName") , {responseType: 'text'}).subscribe(result => {
+        debugger
+         sessionStorage.setItem("UserName", result);
+        //sessionStorage.setItem("UserName", result);
+        //alert(sessionStorage.getItem("UserName"));
+        //window.location.href = result;
+      }, error => console.log(error));}
 
   Department() {
 
