@@ -12,7 +12,7 @@ export const environment = {
   'userManagementServiceUrl':"http://51.141.184.168:8000/UserManagement/",
   'servicecatalogUrl':"http://51.141.184.168:8000/ServiceCatalog/",
 
-  redirectUrl: 'http://localhost:4200',
+  redirectUrl: 'http://localhost:4200/',
   // clientId: 'ENTER_CLIENT_ID_GUID_HERE',
   // tenantName: 'ENTER_TENANT_NAME_HERE'
   clientId: '79d17639-e1f0-4b4d-9be5-624bf7738697',

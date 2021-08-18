@@ -22,7 +22,7 @@ export const environment =  {
 
      'CADServiceUrl': "https://localhost:44373/",
 
-  redirectUrl: 'http://localhost:4200',
+  redirectUrl: 'http://localhost:4200/',
   clientId: '79d17639-e1f0-4b4d-9be5-624bf7738697',
   tenantName: 'b9165cc7-82cb-4b2f-86eb-f60b7e3809a5',
 

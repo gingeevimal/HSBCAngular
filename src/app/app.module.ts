@@ -20,7 +20,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       clientId: environment.clientId,
-      authority: `https://login.microsoftonline.com/${environment.tenantName}.onmicrosoft.com/`,
+      authority: `https://login.microsoftonline.com/${environment.tenantName}`,
       redirectUri: environment.redirectUrl
     },
     cache: {
